@@ -44,7 +44,9 @@ O banco de dados possui o nome `hospital_db` e é composto por **6 tabelas relac
 
 O diagrama apresenta a estrutura do banco, suas entidades e os relacionamentos entre elas.
 
-![Diagrama Entidade-Relacionamento do Hospital](docs/der.png)
+<p align="center">
+<img width="703" alt="Captura de tela 2026-11-11 185735" src="https://github.com/user-attachments/assets/5ad4a94b-6235-4aa4-9447-e44e897d4a58" />
+</p>
 
 ### Modelagem lógica
 
@@ -63,6 +65,11 @@ Armazena as informações cadastrais dos pacientes.
 | telefone_paciente | CHAR(15) | Telefone |
 | convenio | CHAR(50) | Convênio médico |
 
+### Na Prática
+
+<img width="381" alt="image" src="https://github.com/user-attachments/assets/0b011153-2fe8-407d-b2b4-45caa9dccd1b" />
+
+
 #### 2. Médicos
 
 Armazena os dados dos profissionais responsáveis pelos atendimentos.
@@ -73,6 +80,10 @@ Armazena os dados dos profissionais responsáveis pelos atendimentos.
 | nome_medico | CHAR(100) | Nome do médico |
 | crm | CHAR(12) | CRM único |
 | especialidade | CHAR(50) | Especialidade médica |
+
+### Na Prática
+
+<img width="369" alt="image" src="https://github.com/user-attachments/assets/e9464518-ddbd-42d9-9415-be2d591eba33" />
 
 #### 3. Quartos
 
@@ -85,6 +96,10 @@ Responsável pelo armazenamento das informações dos quartos hospitalares.
 | andar | CHAR(3) | Andar do quarto |
 | tipo_quarto | CHAR(30) | Categoria do quarto |
 | status_quarto | CHAR(20) | Situação do quarto |
+
+### Na Prática
+
+<img width="411" alt="image" src="https://github.com/user-attachments/assets/dff379be-6c86-400f-8ec0-89675656d5a1" />
 
 #### 4. Internações
 
@@ -99,6 +114,10 @@ Registra as internações dos pacientes e os quartos utilizados.
 | data_saida | DATE | Data de saída |
 | valor_diaria | DECIMAL(10,2) | Valor da diária |
 
+### Na Prática
+
+<img width="507" alt="image" src="https://github.com/user-attachments/assets/649c5c0a-e66d-49f2-8a3f-0ac64e6bb37c" />
+
 #### 5. Consultas
 
 Armazena os atendimentos realizados pelos médicos.
@@ -112,6 +131,10 @@ Armazena os atendimentos realizados pelos médicos.
 | id_paciente | INT | Chave estrangeira |
 | id_medico | INT | Chave estrangeira |
 
+### Na Prática
+
+<img width="496" alt="image" src="https://github.com/user-attachments/assets/f0a33c07-5581-494d-9606-b18a6a8f04b2" />
+
 #### 6. Prescrições
 
 Armazena os medicamentos e as orientações prescritas durante as consultas.
@@ -123,6 +146,10 @@ Armazena os medicamentos e as orientações prescritas durante as consultas.
 | medicamento | CHAR(100) | Nome do medicamento |
 | dosagem | CHAR(50) | Orientação de uso |
 | quantidade | CHAR(30) | Quantidade prescrita |
+
+### Na Prática
+
+<img width="484" alt="image" src="https://github.com/user-attachments/assets/154e6f22-c5f8-485e-8697-53eb3ceeb4c2" />
 
 ---
 
@@ -143,28 +170,6 @@ O banco utiliza relacionamentos para conectar as informações das diferentes ta
 Os relacionamentos são implementados por meio de chaves estrangeiras (FK), garantindo que os registros relacionados respeitem as referências existentes no banco.
 
 As chaves primárias (PK) identificam exclusivamente cada registro.
-
----
-
-## 📂 Estrutura do Repositório
-
-O projeto está organizado em arquivos SQL separados, facilitando a identificação e execução dos scripts de cada tabela.
-
-```text
-BCD_Hospital/
-│
-├── README.md
-│
-├── hospital_db_pacientes.sql
-├── hospital_db_medicos.sql
-├── hospital_db_quartos.sql
-├── hospital_db_internacoes.sql
-├── hospital_db_consultas.sql
-└── hospital_db_prescricoes.sql
-│
-└── docs/
-    └── der.png
-```
 
 ---
 
@@ -269,6 +274,76 @@ A estrutura permite desenvolver consultas para extrair informações importantes
 - `AVG()`: Calcular médias.
 - `HAVING`: Filtrar resultados agrupados.
 
+---
+
+### 1. Faturamento Total de Consultas por Convênio
+Contextualização e Situação-Problema: O setor financeiro necessita de um levantamento simples do valor total arrecadado em consultas para os convênios que possuem "Saúde" no nome, visando acompanhar o faturamento por parceiro.
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/d32c352c-48d7-4067-aa84-c76313394f5e" />
+
+---
+
+### 2. Média do Valor de Consulta por Especialidade Médica
+Contextualização e Situação-Problema: A coordenação clínica deseja verificar a média do valor das consultas realizadas apenas nas especialidades ligadas à Cardiologia.
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/7c031104-40d1-46d0-ab2d-fcc952a121f8" />
+
+---
+
+### 3. Valor Médio das Diárias por Tipo de Quarto
+Contextualização e Situação-Problema: A gerência de infraestrutura hospitalar precisa analisar o valor médio da diária praticado nas internações em acomodações do tipo "Apartamento" ou "UTI".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/cf13e27e-a43a-42cd-bba8-a5a5b475d2eb" />
+
+---
+
+### 4. Total de Consultas Realizadas por Médico
+Contextualização e Situação-Problema: A diretoria de atendimento quer um relatório que liste o nome dos médicos e a soma total dos valores de suas consultas, filtrando apenas consultas com status de "Realizada" ou "Finalizada".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/d6e13e2c-1760-4d82-abca-010aaa157c44" />
+
+---
+
+### 5. Soma de Diárias por Paciente com Sobrenome "Silva"
+Contextualização e Situação-Problema: O setor de cobrança precisa identificar a soma acumulada do valor das diárias de internação para todos os pacientes que tenham o sobrenome "Silva".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/0fd69b5a-3a7f-4673-a54b-d281170ac7e3" />
+
+---
+
+### 6. Contagem de Prescrições por Status da Consulta
+Contextualização e Situação-Problema: A farmácia hospitalar solicita a quantidade total de medicamentos prescritos agrupada pelo status da consulta correspondente, considerando apenas prescrições onde o medicamento contenha "Dipirona" ou "Paracetamol".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/d6509662-eb64-4831-9d9c-8577c32498d4" />
+
+---
+
+### 7. Média de Valor de Consultas por Convênio e Especialidade
+Contextualização e Situação-Problema: Em negociação contratual, a auditoria do hospital quer saber o valor médio pago por consulta cruzando os convênios que contêm "Unimed" com a especialidade do médico.
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/3f71aa9f-a3fc-4e53-8e3c-2f0a8a3bf355" />
+
+---
+
+### 8. Média de Diária de Internação por Convênio em Quartos de UTI
+Contextualização e Situação-Problema: A regulação hospitalar precisa calcular o valor médio gasto em diárias de internação agrupado por convênio, considerando unicamente os quartos classificados como "UTI".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/2a531142-90b0-4a9c-80d5-1e5a26845bde" />
+
+---
+
+### 9. Medicamentos Prescritos por Médico em Consultas Realizadas
+Contextualização e Situação-Problema: A comissão de farmácia e terapêutica deseja saber a quantidade total de itens prescritos por médico nas consultas que foram marcadas como "Realizada".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/0f1ee5f6-3074-4c7b-ba49-4ffac97306eb" />
+
+---
+
+### 10. Valor Total e Média de Consultas por Paciente
+Contextualização e Situação-Problema: O atendimento ao cliente precisa de um extrato financeiro simples mostrando a soma e a média dos valores gastos em consultas por pacientes cujo nome começa com a letra "M".
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/a3c6dd3d-6e9e-4e83-b27d-06756487c1bc" />
+
 Esses recursos permitem elaborar relatórios de consultas, internações, pacientes e valores hospitalares.
 
 ---
@@ -277,7 +352,7 @@ Esses recursos permitem elaborar relatórios de consultas, internações, pacien
 
 Projeto desenvolvido como atividade acadêmica de Banco de Dados.
 
-**Autor:** [Seu nome]
+**Autor:** Felipe Lisboa Carvalho
 
 ---
 
@@ -285,12 +360,10 @@ Projeto desenvolvido como atividade acadêmica de Banco de Dados.
 
 Este projeto tem como finalidade colocar em prática os conceitos de Banco de Dados Relacionais, incluindo:
 
+- Desenvolvimento de consultas SQL.
 - Criação e estruturação de tabelas.
 - Definição de chaves primárias e estrangeiras.
 - Relacionamentos e cardinalidade.
-- Integridade referencial.
 - Inserção e manipulação de dados.
-- Criação de índices.
-- Desenvolvimento de consultas SQL.
 
 **Projeto desenvolvido para fins educacionais.** Os dados utilizados são fictícios e destinados exclusivamente a testes e demonstrações.
