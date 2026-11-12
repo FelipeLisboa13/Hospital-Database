@@ -1,4 +1,4 @@
-# 🏥 Hospital Database — Sistema de Gerenciamento Hospitalar
+# 🏥 Sistema de Gerenciamento Hospitalar
 
 Projeto acadêmico de Banco de Dados Relacional desenvolvido utilizando **MySQL**, com o objetivo de organizar e gerenciar informações de um hospital.
 
@@ -30,9 +30,7 @@ A estrutura foi planejada para conectar as diferentes áreas do hospital por mei
 ## ⚙️ Tecnologias utilizadas
 
 - **MySQL 8.0:** Sistema de gerenciamento de banco de dados.
-- **SQL:** Linguagem utilizada para criação, manipulação e consulta dos dados.
 - **MySQL Workbench:** Ferramenta para modelagem, administração e visualização do banco.
-- **InnoDB:** Mecanismo de armazenamento utilizado para garantir a integridade referencial.
 
 ---
 
@@ -48,7 +46,72 @@ O diagrama apresenta a estrutura do banco, suas entidades e os relacionamentos e
 <img width="703" alt="Captura de tela 2026-11-11 185735" src="https://github.com/user-attachments/assets/5ad4a94b-6235-4aa4-9447-e44e897d4a58" />
 </p>
 
+### 1. Criar o banco de dados
+
+Execute o seguinte comando:
+
+```sql
+CREATE DATABASE IF NOT EXISTS hospital_db
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_0900_ai_ci;
+
+USE hospital_db;
+```
+
+### 2. Executar os arquivos SQL
+
+Após criar o banco de dados, importe os arquivos na seguinte ordem:
+
+1. `hospital_db_pacientes.sql`
+2. `hospital_db_medicos.sql`
+3. `hospital_db_quartos.sql`
+4. `hospital_db_internacoes.sql`
+5. `hospital_db_consultas.sql`
+6. `hospital_db_prescricoes.sql`
+
+**No MySQL Workbench:**
+
+1. Abra sua conexão com o MySQL.
+2. Selecione o banco de dados `hospital_db`.
+3. Acesse **File → Open SQL Script**.
+4. Escolha o primeiro arquivo SQL.
+5. Execute o script pelo botão de raio.
+6. Repita o procedimento para os demais arquivos, respeitando a ordem indicada.
+
+**Atenção:** Os arquivos SQL possuem comandos `DROP TABLE IF EXISTS` e inserções de dados. Portanto, executá-los novamente recria as respectivas tabelas e pode apagar os dados existentes.
+
+### 3. Verificar a criação do banco
+
+Após executar todos os arquivos, utilize:
+
+```sql
+USE hospital_db;
+
+SHOW TABLES;
+
+```
+
 ### Modelagem lógica
+
+O resultado deverá apresentar as seis tabelas:
+
+- pacientes
+- medicos
+- quartos
+- internacoes
+- consultas
+- prescricoes
+
+Para conferir os registros:
+
+```sql
+SELECT * FROM pacientes;
+SELECT * FROM medicos;
+SELECT * FROM quartos;
+SELECT * FROM internacoes;
+SELECT * FROM consultas;
+SELECT * FROM prescricoes;
+```
 
 A seguir estão as principais tabelas e seus respectivos atributos.
 
@@ -177,73 +240,11 @@ As chaves primárias (PK) identificam exclusivamente cada registro.
 
 ### Pré-requisitos
 
-Antes de executar o projeto, é necessário possuir:
+Antes de executar o projeto:
 
 - MySQL 8.0 ou superior.
 - MySQL Workbench ou outra ferramenta compatível com MySQL.
-
-### 1. Criar o banco de dados
-
-Execute o seguinte comando:
-
-```sql
-CREATE DATABASE IF NOT EXISTS hospital_db;
-
-USE hospital_db;
-```
-
-### 2. Executar os arquivos SQL
-
-Após criar o banco de dados, importe os arquivos na seguinte ordem:
-
-1. `hospital_db_pacientes.sql`
-2. `hospital_db_medicos.sql`
-3. `hospital_db_quartos.sql`
-4. `hospital_db_internacoes.sql`
-5. `hospital_db_consultas.sql`
-6. `hospital_db_prescricoes.sql`
-
-**No MySQL Workbench:**
-
-1. Abra sua conexão com o MySQL.
-2. Selecione o banco de dados `hospital_db`.
-3. Acesse **File → Open SQL Script**.
-4. Escolha o primeiro arquivo SQL.
-5. Execute o script pelo botão de raio.
-6. Repita o procedimento para os demais arquivos, respeitando a ordem indicada.
-
-**Atenção:** Os arquivos SQL possuem comandos `DROP TABLE IF EXISTS` e inserções de dados. Portanto, executá-los novamente recria as respectivas tabelas e pode apagar os dados existentes.
-
-### 3. Verificar a criação do banco
-
-Após executar todos os arquivos, utilize:
-
-```sql
-USE hospital_db;
-
-SHOW TABLES;
-```
-
-O resultado deverá apresentar as seis tabelas:
-
-- pacientes
-- medicos
-- quartos
-- internacoes
-- consultas
-- prescricoes
-
-Para conferir os registros:
-
-```sql
-SELECT * FROM pacientes;
-SELECT * FROM medicos;
-SELECT * FROM quartos;
-SELECT * FROM internacoes;
-SELECT * FROM consultas;
-SELECT * FROM prescricoes;
-```
-
+- 
 ---
 
 ## 📊 Índices e Otimização
