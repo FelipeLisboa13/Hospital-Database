@@ -273,6 +273,7 @@ A estrutura permite desenvolver consultas para extrair informações importantes
 - `SUM()`: Calcular valores acumulados.
 - `AVG()`: Calcular médias.
 - `HAVING`: Filtrar resultados agrupados.
+- `Like`: buscar padrões de texto em colunas de uma tabela.
 
 ---
 
